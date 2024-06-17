@@ -39,5 +39,7 @@ Note: This project assumes that you already have an AWS Account. If you do not h
 ## Setting up environment variables
 
 - Since we are ingesting data from Twitter, we need to set up certain variables that will enable us to extract the data
-- First, we will need an API key and the associated secret key
-- 
+- First, we will need consumer keys: the API key and the associated secret key. These can be found by clicking projects and apps inside the developer account:
+  <img width="670" alt="Screenshot 2024-06-17 at 12 04 44 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/386ccb99-8daa-47de-9ee7-dfcc650978a7">
+
+
