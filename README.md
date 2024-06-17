@@ -71,24 +71,24 @@ import os
 import tweepy
 from datetime import datetime
 
-# Initialize the Firehose client
+## Initialize the Firehose client
 firehose = boto3.client('firehose')
 
-# Initialize the Comprehend client
+## Initialize the Comprehend client
 comprehend = boto3.client('comprehend')
 
-# Twitter API credentials from environment variables
+## Twitter API credentials from environment variables
 TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
 TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
 TWITTER_ACCESS_TOKEN = os.getenv('TWITTER_ACCESS_TOKEN')
 TWITTER_ACCESS_TOKEN_SECRET = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 TWITTER_BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN')
 
-# Check if all environment variables are set
+## Check if all environment variables are set
 if not all([TWITTER_API_KEY, TWITTER_API_SECRET_KEY, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET, TWITTER_BEARER_TOKEN]):
     raise EnvironmentError("One or more Twitter API credentials are not set in environment variables.")
 
-# Tweepy client initialization
+## Tweepy client initialization
 client = tweepy.Client(bearer_token=TWITTER_BEARER_TOKEN, wait_on_rate_limit=True)
 
 # Firehose delivery stream.
