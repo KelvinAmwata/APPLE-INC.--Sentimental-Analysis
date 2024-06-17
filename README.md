@@ -93,7 +93,7 @@ if not all([TWITTER_API_KEY, TWITTER_API_SECRET_KEY, TWITTER_ACCESS_TOKEN, TWITT
 ## Tweepy client initialization
 client = tweepy.Client(bearer_token=TWITTER_BEARER_TOKEN, wait_on_rate_limit=True)
 
-# Firehose delivery stream.
+## Firehose delivery stream.
 DELIVERY_STREAM_NAME = 'PUT-S3-EI36D'
 
 def lambda_handler(event, context):
