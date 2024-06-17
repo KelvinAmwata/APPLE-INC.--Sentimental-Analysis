@@ -33,3 +33,11 @@ Note: This project assumes that you already have an AWS Account. If you do not h
 - Click on settings, and then click on manage settings. Here we want to set the location where we will store the results of our queries. So open a duplicate go back to S3 and create another bucket. Remember to adhere to s3 naming conventions
 - Now we create the database. On the query editor, enter DDL: CREATE DATABASE database name. Replace the database name with the name you want for your database
 - We now have Athena set up and we are ready to crawl the data
+
+# Data Ingestion 
+
+## Setting up environment variables
+
+- Since we are ingesting data from Twitter, we need to set up certain variables that will enable us to extract the data
+- First, we will need an API key and the associated secret key
+- 
