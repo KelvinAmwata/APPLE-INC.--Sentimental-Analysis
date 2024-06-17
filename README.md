@@ -5,7 +5,7 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 # Data Sources 
 - The source of data for this project is X tweets(formerly known as twitter)
 - X link: [https://x.com/home]
-## 
+## Tools,Services, and Software
 - AWS Account
 - AWS Lambda
 - AWS Firehose
@@ -14,3 +14,6 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 - AWS S3
 - AWS Quicksight
 - AWS 
+
+# Project Steps 
+Note: This project assumes that you already have an AWS Account. If you do not have one, please follow this link: [https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html]
