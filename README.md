@@ -37,13 +37,33 @@ Note: This project assumes that you already have an AWS Account. If you do not h
 # Data Ingestion 
 
 ## Setting up environment variables
+### Getting environmental variables: 
 
 - Since we are ingesting data from Twitter, we need to set up certain variables that will enable us to extract the data
 - First, we will need consumer keys: the API key and the associated secret key. These can be found by clicking projects and apps inside the developer account:
-  <img width="670" alt="Screenshot 2024-06-17 at 12 04 44 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/386ccb99-8daa-47de-9ee7-dfcc650978a7">
+  
+<img width="670" alt="Screenshot 2024-06-17 at 12 04 44 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/386ccb99-8daa-47de-9ee7-dfcc650978a7">
 -  Below the consumer keys, we will get the bearer token and access token keys as well as their respective secrets
 
-
 <img width="666" alt="Screenshot 2024-06-17 at 12 15 07 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/448b2896-5630-4d56-b196-cce4296f7aed">
+
+### Storing the environmental variables in the lambda environment 
+- Having gotten our variables, the next step is to input them in the AWS environment. This is a good way of storing secrets. Please note that sensitive information should not be stored as plain text
+-  Search for AWS Lambda on the search bar
+-  Click Create a function and give your function a descriptive name
+-  For the runtime, select python
+
+<img width="854" alt="Screenshot 2024-06-17 at 12 21 49 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/555e0f0a-fbec-489e-85f7-4cb16c931d6a">
+  
+-  For the permissions, ensure the role you give your function has full access to Firehose and S3
+-  We are now done creating our function and we need to set the variables that we need to access the Twitter API
+-  Click on configurations and then environment variables on the left side
+
+  <img width="754" alt="Screenshot 2024-06-17 at 12 31 19 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/14de5603-7c4b-4a39-9871-cf62d89263cb">
+
+- Click edit and add all the variables:  Access token, API key, and bearer token. The value of the variables will be the secret keys
+- 
+
+
 
 
