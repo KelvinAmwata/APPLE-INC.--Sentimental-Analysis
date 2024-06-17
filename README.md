@@ -19,3 +19,9 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 
 ## Creating an AWS Account: 
 Note: This project assumes that you already have an AWS Account. If you do not have one, please follow this link: [https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html]
+## Create an S3 Bucket 
+- We need an S3 bucket to store our data. Amazon Simple Storage Service (S3) is an object storage service that is highly effective for data storage.
+- It is from the s3 bucket that glue will crawl the data and create a schema
+- Ensure the name that you give to your bucket is unique. Bucket names are global by nature. It's advisable to use descriptive names for reference purposes
+-  Steps to creating a bucket: [https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html]
+-  
