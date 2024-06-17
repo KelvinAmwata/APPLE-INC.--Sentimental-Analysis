@@ -179,7 +179,8 @@ def lambda_handler(event, context):
 - Once we've connected Athena to Quick Sight, we can now visualize the data
 ### Analyzing the Sentiments
 - We visualize the data to know the sentiment of the customers/users. Whether negative, positive, or neutral. These are the results we obtain:
-- 
+  
 
+<img width="800" alt="Screenshot 2024-06-17 at 1 47 02 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/18b01c72-5a8f-47ce-a9c2-679220a4d63e">
 
 
