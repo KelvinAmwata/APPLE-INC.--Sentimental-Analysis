@@ -168,8 +168,18 @@ def lambda_handler(event, context):
 -  The following is a snippet of our query results: 
 
 ~~
+
 <img width="902" alt="Screenshot 2024-06-17 at 1 35 43 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/1597b3a3-2202-4529-949c-e40ded4f9295">
+
 ~~
+
+## Data Visualization 
+- To visualize the data, we will connect Amazon Quicksight to Athena
+- The steps can be found here: [https://catalog.us-east-1.prod.workshops.aws/workshops/9981f1a1-abdc-49b5-8387-cb01d238bb78/en-US/30-basics/307-quicksight]
+- Once we've connected Athena to Quick Sight, we can now visualize the data
+### Analyzing the Sentiments
+- We visualize the data to know the sentiment of the customers/users. Whether negative, positive, or neutral. These are the results we obtain:
+- 
 
 
 
