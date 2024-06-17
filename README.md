@@ -183,5 +183,48 @@ def lambda_handler(event, context):
 
 <img width="800" alt="Screenshot 2024-06-17 at 1 47 02 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/18b01c72-5a8f-47ce-a9c2-679220a4d63e">
 
-## Analysis
-- From the pie chart above, we can deduce that majority of the people(59%) had neutral thoughts about Apple's new AI strategy.  12 % of the people had positive thoughts whereas 29% had negative thoughts about the new AI strategy 
+## Analysis: Percentages 
+- From the pie chart above, we can deduce that the majority of the people(59%) had neutral thoughts about Apple's new AI strategy.  12 % of the people had positive thoughts whereas 29% had negative thoughts about the new AI strategy
+## Analysis: Commonly said words 
+- In this analysis, I delved into getting the most commonly said sentiments by customers/Twitter users
+-  Due to the complex nature of the analysis involved in this part, I had to download the data and utilize the Python pandas library to perform the analysis
+-   This is the code used for this analysis:
+
+~~
+
+import pandas as pd
+
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv("/Users/ongaga/Downloads/7574f919-8134-4816-9c97-794d60df6171.csv")
+
+# Define a function to clean and split the strings into lists
+def clean_and_split(text):
+    # Remove leading and trailing square brackets
+    text = text.strip('][')
+    # Split the string by commas
+    items = text.split(', ')
+    # Remove single quotes from each item
+    items = [item.strip("'") for item in items]
+    return items
+
+# Apply the function to the 'key_phrases' column
+df['key_phrases'] = df['key_phrases'].apply(clean_and_split)
+
+# Flatten the lists in the 'key_phrases' column
+all_key_phrases = [phrase for sublist in df['key_phrases'] for phrase in sublist]
+
+# Count the occurrences of each sentiment word
+word_counts = pd.Series(Counter(all_key_phrases))
+
+# Select the top 10 sentiment words
+top_10_words = word_counts.nlargest(10)
+
+# Plot the bar graph for top 10 sentiment words
+top_10_words.plot(kind='bar')
+plt.xlabel('Sentiment Words')
+plt.ylabel('Count')
+plt.title('Top 10 Sentiment Words')
+plt.show()
+
+~~
