@@ -183,4 +183,5 @@ def lambda_handler(event, context):
 
 <img width="800" alt="Screenshot 2024-06-17 at 1 47 02 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/18b01c72-5a8f-47ce-a9c2-679220a4d63e">
 
-
+## Analysis
+- From the pie chart above, we can deduce that majority of the people(59%) had neutral thoughts about Apple's new AI strategy.  12 % of the people had positive thoughts whereas 29% had negative thoughts about the new AI strategy 
