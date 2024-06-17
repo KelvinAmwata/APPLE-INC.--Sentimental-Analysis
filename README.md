@@ -24,4 +24,6 @@ Note: This project assumes that you already have an AWS Account. If you do not h
 - It is from the s3 bucket that glue will crawl the data and create a schema
 - Ensure the name that you give to your bucket is unique. Bucket names are global by nature. It's advisable to use descriptive names for reference purposes
 -  Steps to creating a bucket: [https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html]
--  
+## Create Kinesis Firehose Data Stream 
+- Kinesis firehose data stream is a near real-time data ingestion service that ingests data from a source and loads it to a storage service. In this project, kinesis firehose will load data from lambda and load it into an S3 bucket.
+-  Steps to creating firehose data stream: 
