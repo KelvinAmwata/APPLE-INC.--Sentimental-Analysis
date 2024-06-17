@@ -16,4 +16,6 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 - AWS 
 
 # Project Steps 
+
+## Creating an AWS Account: 
 Note: This project assumes that you already have an AWS Account. If you do not have one, please follow this link: [https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html]
