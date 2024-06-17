@@ -203,3 +203,6 @@ def lambda_handler(event, context):
 - From the above chart, we can see that the top 10 words that dominated the conversation on Twitter were openAI, their Own AI, the OS level, and others
 -  The words are really related to the announcements made by Apple where it announced that they were going to integerate AI to their products 
 
+## Future Projects
+- Due to time limits I was not able to further perform a deep dive analysis on the sentiments
+-  My future analysis on this project will delve into the nitty-gritty of the sentiments where I could find the countries of the users, geographical location, and other demographics like age. 
