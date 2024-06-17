@@ -144,7 +144,23 @@ def lambda_handler(event, context):
             'body': json.dumps(f'An error occurred: {str(e)}')
         }
   ~~
+## Crawling the Data and generating a schema 
+- Now that we have the data in our s3 bucket, the next thing is to crawl the data to generate the schema and be able to query it using Amazon Athena
+- Search for AWS glue on the search bar.
+- On the left side, look for crawler under data catalog:
+- Click data source and under s3 path, select the s3 bucket name you created as a data source. Sometimes you may see an error after browing the name of your bucket. In such a case, ensure you put a forward slash(/) after the name for it to work. You can also press the escape key. Either of those options will work
+- We've now created our crawler and all that it needs for it to crawl the S3 bucket is to grant it permissions via a role.
+- Under configuration, click create IAM role
+  
+<img width="792" alt="Screenshot 2024-06-17 at 1 22 59 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/56aadcf6-c71a-4e7f-bd42-9c40113bbf6b">
 
+- We then select the database name we created when setting up Athena. You can give the prefix of the table you want the crawler to create after it has crawled the data:
+
+ <img width="792" alt="Screenshot 2024-06-17 at 1 24 08 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/7343a8a0-8d7d-4e40-bdac-1da5951bee55">
+ 
+- Our crawler is now all set and we click review and update
+
+- Click run crawler and it will take a few seconds to complete:
 
 
 
