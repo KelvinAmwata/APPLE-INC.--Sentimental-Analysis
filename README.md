@@ -152,7 +152,7 @@ def lambda_handler(event, context):
 - On the left side, look for crawler under data catalog:
 - Click data source and under s3 path, select the s3 bucket name you created as a data source. Sometimes you may see an error after browing the name of your bucket. In such a case, ensure you put a forward slash(/) after the name for it to work. You can also press the escape key. Either of those options will work
 - We've now created our crawler and all that it needs for it to crawl the S3 bucket is to grant it permissions via a role.
-- Under configuration, click create IAM role
+- Under configuration, click Create IAM role
   
 <img width="792" alt="Screenshot 2024-06-17 at 1 22 59 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/56aadcf6-c71a-4e7f-bd42-9c40113bbf6b">
 
@@ -163,6 +163,46 @@ def lambda_handler(event, context):
 - Our crawler is now all set and we click review and update
 
 - Click run crawler and it will take a few seconds to complete:
+### Querying the data 
+- Once the schema has been created, we can now query our data from Athena:
+-  The following is a snippet of our query results: 
+~~
+#	id	text	created_at	author_id	lang	possibly_sensitive	source	sentiment	sentiment_score	key_phrases	partition_0	partition_1	partition_2	partition_3
+1	1800322424241856889	RT @PopCrave: Apple will allow users to lock or hide apps in iOS 18.
+
+While the app lock feature is enabled, information from the app won’t…						NEUTRAL	{positive=0.022945856675505638, negative=0.19788743555545807, neutral=0.7786388993263245, mixed=5.278025637380779E-4}	[RT, Apple, users, apps, iOS 18, the app lock feature, information, the app]	2024	06	11	00
+2	1800322424178622787	@GotSole69 @edwinxsilva @ShottaSV if you’re so holy show me your apple music wrapped? let’s see that you don’t support the pedo.						NEUTRAL	{positive=0.11820558458566666, negative=0.2984236478805542, neutral=0.5772218108177185, mixed=0.006148963700979948}	[@GotSole69 @edwinxsilva, your apple music, the pedo]	2024	06	11	00
+3	1800322423897870751	RT @elonmusk: It’s patently absurd that Apple isn’t smart enough to make their own AI, yet is somehow capable of ensuring that OpenAI will…						NEGATIVE	{positive=0.004890695214271545, negative=0.8776695728302002, neutral=0.11418762058019638, mixed=0.0032521565444767475}	[RT, Apple, their own AI, OpenAI]	2024	06	11	00
+4	1800322423788835253	RT @spin9: macOS Sequoia เพิ่มฟีเจอร์ iPhone Mirroring 
+
+เอา iPhone มาเปิดเป็นหน้าต่างนึงบนเครื่อง Mac ได้แบบไร้สาย ควบคุมได้ผ่านคีย์บอร์ดแ…						NEUTRAL	{positive=0.011609367094933987, negative=0.01715097948908806, neutral=0.9712315201759338, mixed=8.127817636705004E-6}	[RT, macOS, Sequoia, iPhone, iPhone, Mac]	2024	06	11	00
+5	1800322422912299484	RT @TweetsOfSumit: All the startups Apple killed today 🧵
+
+#WWDC						NEGATIVE	{positive=0.005510256160050631, negative=0.7337867021560669, neutral=0.2599102854728699, mixed=7.927261176519096E-4}	[RT @, All the startups, Apple, today]	2024	06	11	00
+6	1800322422333411437	RT @spin9: [spin9] สรุปเปิดตัว AI จาก Apple — พร้อมใช้ใน iOS 18 ปีนี้! พร้อมเปิดตัวฟีเจอร์ใหม่จาก WWDC24
+https://t.co/IEA6jcf1Mx https://t.…						NEUTRAL	{positive=0.00628210324794054, negative=4.302770321373828E-5, neutral=0.9936580061912537, mixed=1.6850020983838476E-5}	[RT, สรุปเปิดตัว, AI, Apple, iOS 18 ปีนี้]	2024	06	11	00
+7	1800322422144434443	RT @streamfortaejpn: &lt; 🇯🇵Apple music &gt; 6/11  9:00 
+トップソング(K-POP) 
+FRI(END)S  V  #199  🚨🚨
+
+Apple musicユーザーの方はストリーミングお願いします。曲横↓がない状態(ダウンロード削除…						NEUTRAL	{positive=0.007352383341640234, negative=0.00979039166122675, neutral=0.9828518629074097, mixed=5.332825821824372E-6}	[RT @streamfortaejpn, &lt; 🇯🇵Apple music &gt; 6/11  9:00 
+トップソング(K-POP) 
+FRI(END)S  V, #199  🚨🚨
+
+Apple musicユーザーの方はストリーミングお願いします]	2024	06	11	00
+8	1800322421087740368	RT @spin9: เปิดตัวความสามารถของ Apple Intelligence
+
+- เรียนรู้สไตล์ การใช้ภาษา การเรียบเรียงของผู้ใช้แต่ละคน
+- เรียบเรียงข้อความที่จะเขียน…						NEUTRAL	{positive=0.0025975508615374565, negative=4.0524674113839865E-4, neutral=0.9969925880432129, mixed=4.600704414770007E-6}	[RT, เปิดตัวความสามารถของ, การใช้ภาษา การเรียบเรียงของผู้ใช้แต่ละคน]	2024	06	11	00
+9	1800322420576055363	RT @spin9: เปิดตัว iPadOS 18 เพิ่มแอพเครื่องคิดเลข!!
+
+แบบอลังการสุดๆ ยิ่งกว่า scientific calculator ด้วยฟีเจอร์ Math Note
+
+ใช้ Apple Pencil…						POSITIVE	{positive=0.8043846487998962, negative=0.0012732991017401218, neutral=0.19426175951957703, mixed=8.026634168345481E-5}	[RT, 18]	2024	06	11	00
+10	1800322419560980577	RT @dulapeeppa: Apple doing more promo for her than her own label 😭 https://t.co/g2GoEfy3Sq						NEUTRAL	{positive=0.07786209136247635, negative=0.07735653221607208, neutral=0.8427755832672119, mixed=0.0020058222580701113}	[RT @dulapeeppa, Apple, more promo]	2024	06	11	00
+
+
+~~
 
 
 
