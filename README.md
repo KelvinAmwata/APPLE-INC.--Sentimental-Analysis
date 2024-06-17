@@ -197,6 +197,9 @@ def lambda_handler(event, context):
 ~~
 - Using the code above we get the following visual:
   
-<img width="494" alt="Screenshot 2024-06-17 at 2 51 52 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/6be3fb04-93b7-4631-8cba-2c2c9bcc899a">
+<img width="564" alt="Screenshot 2024-06-17 at 2 53 37 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/75cd3822-bc3c-4da4-880c-dfc2da4f9f2b">
 
+
+- From the above chart, we can see that the top 10 words that dominated the conversation on Twitter were openAI, their Own AI, the OS level, and others
+-  The words are really related to the announcements made by Apple where it announced that they were going to integerate AI to their products 
 
