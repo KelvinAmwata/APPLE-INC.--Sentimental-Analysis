@@ -62,7 +62,89 @@ Note: This project assumes that you already have an AWS Account. If you do not h
   <img width="754" alt="Screenshot 2024-06-17 at 12 31 19 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/14de5603-7c4b-4a39-9871-cf62d89263cb">
 
 - Click edit and add all the variables:  Access token, API key, and bearer token. The value of the variables will be the secret keys
-- 
+- Now we have all our variables set
+- Let us now  write a code that will ingest data from Twitter:
+  ~~
+import boto3
+import json
+import os
+import tweepy
+from datetime import datetime
+
+# Initialize the Firehose client
+firehose = boto3.client('firehose')
+
+# Initialize the Comprehend client
+comprehend = boto3.client('comprehend')
+
+# Twitter API credentials from environment variables
+TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
+TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
+TWITTER_ACCESS_TOKEN = os.getenv('TWITTER_ACCESS_TOKEN')
+TWITTER_ACCESS_TOKEN_SECRET = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+TWITTER_BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN')
+
+# Check if all environment variables are set
+if not all([TWITTER_API_KEY, TWITTER_API_SECRET_KEY, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET, TWITTER_BEARER_TOKEN]):
+    raise EnvironmentError("One or more Twitter API credentials are not set in environment variables.")
+
+# Tweepy client initialization
+client = tweepy.Client(bearer_token=TWITTER_BEARER_TOKEN, wait_on_rate_limit=True)
+
+# Firehose delivery stream.
+DELIVERY_STREAM_NAME = 'PUT-S3-EI36D'
+
+def lambda_handler(event, context):
+    try:
+        # Fetch recent tweets containing Amazon key word
+        response = client.search_recent_tweets(query="amazon", max_results=100)
+
+        if response.data:
+            for tweet in response.data:
+                # Structure the tweet data for Glue schema inference
+                structured_tweet = {
+                    'id': tweet.id,
+                    'text': tweet.text,
+                    'created_at': tweet.created_at.isoformat() if tweet.created_at else None,
+                    'author_id': tweet.author_id,
+                    'lang': tweet.lang,
+                    'possibly_sensitive': tweet.possibly_sensitive if 'possibly_sensitive' in tweet.data else None,
+                    'source': tweet.source
+                }
+
+                # Call Amazon Comprehend to analyze the tweet text
+                comprehend_response = comprehend.detect_sentiment(Text=tweet.text, LanguageCode='en')
+                structured_tweet['sentiment'] = comprehend_response['Sentiment']
+                structured_tweet['sentiment_score'] = comprehend_response['SentimentScore']
+
+                # Prepare the record data
+                record_data = json.dumps(structured_tweet) + '\n'
+
+                # Send the record to Firehose
+                firehose_response = firehose.put_record(
+                    DeliveryStreamName=DELIVERY_STREAM_NAME,
+                    Record={'Data': record_data}
+                )
+                print("Firehose put_record response:", firehose_response)
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps('Tweets processed successfully.')
+        }
+
+    except tweepy.Unauthorized as e:
+        return {
+            'statusCode': 401,
+            'body': json.dumps('Unauthorized access - please check your Twitter API credentials.')
+        }
+    except Exception as e:
+        print(f'An error occurred: {str(e)}')
+        return {
+            'statusCode': 500,
+            'body': json.dumps(f'An error occurred: {str(e)}')
+        }
+
+  ~~
 
 
 
