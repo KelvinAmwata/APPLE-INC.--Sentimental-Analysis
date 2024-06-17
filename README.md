@@ -15,26 +15,26 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 - AWS Quicksight
 - AWS 
 
-# Project Steps 
+## Project Steps 
 
-## Creating an AWS Account: 
+### Creating an AWS Account: 
 Note: This project assumes that you already have an AWS Account. If you do not have one, please follow this link: [https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html]
-## Create an S3 Bucket 
+### Create an S3 Bucket 
 - We need an S3 bucket to store our data. Amazon Simple Storage Service (S3) is an object storage service that is highly effective for data storage.
 - It is from the s3 bucket that glue will crawl the data and create a schema
 - Ensure the name that you give to your bucket is unique. Bucket names are global by nature. It's advisable to use descriptive names for reference purposes
 -  Steps to creating a bucket: [https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html]
-## Create Kinesis Firehose Data Stream 
+### Create Kinesis Firehose Data Stream 
 - Kinesis firehose data stream is a near real-time data ingestion service that ingests data from a source and loads it to a storage service. In this project, kinesis firehose will load data from lambda and load it into an S3 bucket.
 -  Steps to creating firehose data stream:[https://docs.aws.amazon.com/firehose/latest/dev/basic-create.html]
-## Create Athena: 
+### Create Athena: 
 - After Kinesis firehose pushes the data into an S3 bucket, the next step is to query the data using Athena so that the data can be ready for visualizations and other business needs
 - Search for Athena on the search bar.
 - Click on settings, and then click on manage settings. Here we want to set the location where we will store the results of our queries. So open a duplicate go back to S3 and create another bucket. Remember to adhere to s3 naming conventions
 - Now we create the database. On the query editor, enter DDL: CREATE DATABASE database name. Replace the database name with the name you want for your database
 - We now have Athena set up and we are ready to crawl the data
 
-# Data Ingestion 
+## Data Ingestion 
 
 ## Setting up environment variables
 ### Getting environmental variables: 
