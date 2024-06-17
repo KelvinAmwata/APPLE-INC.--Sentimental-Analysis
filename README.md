@@ -195,5 +195,8 @@ def lambda_handler(event, context):
 <img width="701" alt="Screenshot 2024-06-17 at 2 06 19 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/178cc526-e3d0-4ac4-a76d-8492b87c1abf">
 
 ~~
+- Using the code above we get the following visual:
+  
+<img width="494" alt="Screenshot 2024-06-17 at 2 51 52 PM" src="https://github.com/KelvinAmwata/APPLE-INC.--Sentimental-Analysis/assets/83902270/6be3fb04-93b7-4631-8cba-2c2c9bcc899a">
 
 
