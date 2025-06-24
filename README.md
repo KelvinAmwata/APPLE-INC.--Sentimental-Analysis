@@ -13,7 +13,6 @@ Apple Inc. is one of the leading tech companies in the world. Headquartered in C
 - AWS Glue
 - AWS S3
 - AWS Quicksight
-- AWS 
 
 ## Project Steps 
 
